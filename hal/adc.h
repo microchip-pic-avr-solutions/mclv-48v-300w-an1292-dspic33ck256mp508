@@ -66,31 +66,31 @@
 // *****************************************************************************
 // *****************************************************************************
 // ADC MODULE Related Definitions
-#define ADCBUF_INV_A_IPHASE1    -ADCBUF0
-#define ADCBUF_INV_A_IPHASE2    -ADCBUF1
-#define ADCBUF_INV_A_IBUS       ADCBUF4
+#define ADCBUF_INV_A_IPHASE1    -ADCBUF1
+#define ADCBUF_INV_A_IPHASE2    -ADCBUF4
+#define ADCBUF_INV_A_IBUS       ADCBUF0
         
-#define ADCBUF_SPEED_REF_A      ADCBUF11
+#define ADCBUF_SPEED_REF_A      ADCBUF17
 #define ADCBUF_VBUS_A           ADCBUF15
-#define ADCBUF_MOSFET_TEMP_A    ADCBUF12
+#define ADCBUF_MOSFET_TEMP_A    ADCBUF18
 
 /* This defines number of current offset samples for averaging 
  * If the 2^n samples are considered specify n(in this case 2^7(= 128)=> 7*/
 #define  CURRENT_OFFSET_SAMPLE_SCALER         7
 #ifdef SINGLE_SHUNT       
-#define EnableADCInterrupt()   _ADCAN4IE = 1
-#define DisableADCInterrupt()  _ADCAN4IE = 0
-#define ClearADCIF()           _ADCAN4IF = 0
-#define ClearADCIF_ReadADCBUF() ADCBUF4
+#define EnableADCInterrupt()   _ADCAN0IE = 1
+#define DisableADCInterrupt()  _ADCAN0IE = 0
+#define ClearADCIF()           _ADCAN0IF = 0
+#define ClearADCIF_ReadADCBUF() ADCBUF0
         
-#define _ADCInterrupt _ADCAN4Interrupt  
+#define _ADCInterrupt _ADCAN0Interrupt  
 #else
- #define EnableADCInterrupt()   _ADCAN1IE = 1
-#define DisableADCInterrupt()  _ADCAN1IE = 0
-#define ClearADCIF()           _ADCAN1IF = 0
-#define ClearADCIF_ReadADCBUF() ADCBUF1
+#define EnableADCInterrupt()   _ADCAN17IE = 1
+#define DisableADCInterrupt()  _ADCAN17IE = 0
+#define ClearADCIF()           _ADCAN17IF = 0
+#define ClearADCIF_ReadADCBUF() ADCBUF17
         
-#define _ADCInterrupt _ADCAN1Interrupt  
+#define _ADCInterrupt _ADCAN17Interrupt  
 #endif
         
 // *****************************************************************************

@@ -527,17 +527,16 @@ void __attribute__((__interrupt__,no_auto_psv)) _ADCInterrupt()
 
         if (singleShuntParam.adcSamplePoint == 0)
         {
-            measureInputs.current.Ia = ADCBUF_INV_A_IPHASE1;
-            measureInputs.current.Ib = ADCBUF_INV_A_IPHASE2; 
-
+             
 #ifdef SINGLE_SHUNT
                 
             /* Reconstruct Phase currents from Bus Current*/                
             SingleShunt_PhaseCurrentReconstruction(&singleShuntParam);
-            MCAPP_MeasureCurrentCalibrate(&measureInputs);
             iabc.a = singleShuntParam.Ia;
             iabc.b = singleShuntParam.Ib;
 #else
+            measureInputs.current.Ia = ADCBUF_INV_A_IPHASE1;
+            measureInputs.current.Ib = ADCBUF_INV_A_IPHASE2;
             MCAPP_MeasureCurrentCalibrate(&measureInputs);
             iabc.a = measureInputs.current.Ia;
             iabc.b = measureInputs.current.Ib;

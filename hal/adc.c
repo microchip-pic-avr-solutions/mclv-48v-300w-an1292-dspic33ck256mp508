@@ -235,10 +235,12 @@ void InitializeADCs (void)
     ADMOD0Lbits.SIGN4 = 1;
    
     /*ADMOD0H configures Output Data Sign for Analog inputs  AN8 to AN15 */
-    ADMOD0H = 0;
-    ADMOD0Hbits.SIGN11 = 0;
-    ADMOD0Hbits.SIGN12 = 0;    
+    ADMOD0H = 0;   
     ADMOD0Hbits.SIGN15 = 0;
+    ADMOD1L = 0x0000;
+    ADMOD1Lbits.SIGN17 = 0;
+    ADMOD1Lbits.SIGN18 = 0;
+    
 
     
     /* Ensuring all interrupts are disabled and Status Flags are cleared */
@@ -293,13 +295,13 @@ void InitializeADCs (void)
        1 = Common and individual interrupts are enabled for analog channel
        0 = Common and individual interrupts are disabled for analog channel*/
    
-    _IE15        = 0 ;
+    _IE18        = 0 ;
     /* Clear ADC interrupt flag */
-    _ADCAN15IF    = 0 ;  
+    _ADCAN18IF    = 0 ;  
     /* Set ADC interrupt priority IPL 7  */ 
-    _ADCAN15IP   = 7 ;  
+    _ADCAN18IP   = 7 ;  
     /* Disable the AN15 interrupt  */
-    _ADCAN15IE    = 0 ; 
+    _ADCAN18IE    = 0 ; 
     
     _IE11        = 0 ;
     /* Clear ADC interrupt flag */
@@ -318,22 +320,22 @@ void InitializeADCs (void)
     _ADCAN0IE    = 0 ;  
     
 #ifdef SINGLE_SHUNT    
-     _IE4        = 1 ;
+     _IE0        = 1 ;
     /* Clear ADC interrupt flag */
-    _ADCAN4IF    = 0 ;  
+    _ADCAN0IF    = 0 ;  
     /* Set ADC interrupt priority IPL 7  */ 
-    _ADCAN4IP   = 7 ;  
+    _ADCAN0IP   = 7 ;  
     /* Disable the AN4 interrupt  */
-    _ADCAN4IE    = 0 ;
+    _ADCAN0IE    = 0 ;
      
 #else         
-    _IE1        = 1 ;
+    _IE17        = 1 ;
     /* Clear ADC interrupt flag */
-    _ADCAN1IF    = 0 ;  
+    _ADCAN17IF    = 0 ;  
     /* Set ADC interrupt priority IPL 7  */ 
-    _ADCAN1IP   = 7 ;  
+    _ADCAN17IP   = 7 ;  
     /* Disable the AN1 interrupt  */
-    _ADCAN1IE    = 0 ; 
+    _ADCAN17IE    = 0 ; 
 #endif
     
     /* Trigger Source Selection for Corresponding Analog Inputs bits 
@@ -342,26 +344,21 @@ void InitializeADCs (void)
         00001 = Common software trigger
         00000 = No trigger is enabled  */
     
-    /* Trigger Source for Analog Input #0  = 0b0100 */
-    ADTRIG0Lbits.TRGSRC0 = 0x4;
-    /* Trigger Source for Analog Input #1  = 0b0100 */
-    ADTRIG0Lbits.TRGSRC1 = 0x4;
+
 #ifdef SINGLE_SHUNT
-    /* Trigger Source for Analog Input #4  = 0b0101 */
-    ADTRIG1Lbits.TRGSRC4 = 0x5;
-    /* Trigger Source for Analog Input #11  = 0b0001 */
-    ADTRIG2Hbits.TRGSRC11 = 0x1;
-    /* Trigger Source for Analog Input #12  = 0b0001 */
-    ADTRIG3Lbits.TRGSRC12 = 0x1;
-    /* Trigger Source for Analog Input #15  = 0b0001 */
-    ADTRIG3Hbits.TRGSRC15 = 0x1;
+    /* Trigger Source for Analog Input #0  = 0b0101 */
+    ADTRIG0Lbits.TRGSRC0 = 0x5;
 #else
-    /* Trigger Source for Analog Input #11  = 0b0100 */
-    ADTRIG2Hbits.TRGSRC11 = 0x4;
-    /* Trigger Source for Analog Input #12  = 0b0100 */
-    ADTRIG3Lbits.TRGSRC12 = 0x4;
+      /* Trigger Source for Analog Input #1  = 0b0100 */
+    ADTRIG0Lbits.TRGSRC1 = 0x4;
+    /* Trigger Source for Analog Input #4  = 0b0100 */
+    ADTRIG1Lbits.TRGSRC4 = 0x4;  
+#endif
     /* Trigger Source for Analog Input #15  = 0b0100 */
     ADTRIG3Hbits.TRGSRC15 = 0x4;
-#endif
+    /* Trigger Source for Analog Input #17  = 0b0100 */
+    ADTRIG4Lbits.TRGSRC17 = 0x4;
+    /* Trigger Source for Analog Input #18  = 0b0100 */
+    ADTRIG4Hbits.TRGSRC18 = 0x4;
 
 }
