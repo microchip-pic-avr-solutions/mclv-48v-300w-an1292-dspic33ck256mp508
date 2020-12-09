@@ -259,7 +259,7 @@ void MapGPIOHWFunction(void)
         PIM pins on the Motor Control Development Boards .
         UART_RX : PIN #14 - ANN2/RP77/RD13 (Input)
         UART_TX : PIN #13 - RP78/PCI21/RD14(Output)   */
-    _U1RXR = 78;
+    _U1RXR = 77;
     _RP78R = 0b000001;
     
     
