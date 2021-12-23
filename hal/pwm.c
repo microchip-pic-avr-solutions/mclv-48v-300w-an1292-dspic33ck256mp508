@@ -565,7 +565,7 @@ void InitPWMGenerator1 (void)
     /* Termination Event Selection bits
        001 = Auto-Terminate: Terminate when PCI source transitions from 
              active to inactive */
-    PG1FPCILbits.TERM = 0;
+    PG1FPCILbits.TERM = 1;
     /* Acceptance Qualifier Polarity Select bit: 0 = Not inverted 1 = Inverted*/
     PG1FPCILbits.AQPS = 0;
     /* Acceptance Qualifier Source Selection bits
@@ -583,13 +583,13 @@ void InitPWMGenerator1 (void)
        0 = PCI source is not synchronized to PWM EOC*/
     PG1FPCILbits.PSYNC = 0;
     /* PCI Polarity Select bit 0 = Not inverted 1 = Inverted */
-    PG1FPCILbits.PPS = 0;
+    PG1FPCILbits.PPS = 1;
     /* PCI Source Selection bits
        11111 = PCI Source #31
        ? ?
        00001 = PCI Source #1
        00000 = Software PCI control bit (SWPCI) only*/
-    PG1FPCILbits.PSS = 0b11011;
+    PG1FPCILbits.PSS = 9;
     
     /* PWM GENERATOR 1 Fault PCI REGISTER HIGH */
     PG1FPCIH     = 0x0000;
@@ -890,7 +890,7 @@ void InitPWMGenerator2 (void)
     /* Termination Event Selection bits
        001 = Auto-Terminate: Terminate when PCI source transitions from 
              active to inactive */
-    PG2FPCILbits.TERM = 0;
+    PG2FPCILbits.TERM = 1;
     /* Acceptance Qualifier Polarity Select bit: 0 = Not inverted 1 = Inverted*/
     PG2FPCILbits.AQPS = 0;
     /* Acceptance Qualifier Source Selection bits
@@ -908,13 +908,13 @@ void InitPWMGenerator2 (void)
        0 = PCI source is not synchronized to PWM EOC*/
     PG2FPCILbits.PSYNC = 0;
     /* PCI Polarity Select bit 0 = Not inverted 1 = Inverted*/
-    PG2FPCILbits.PPS = 0;
+    PG2FPCILbits.PPS = 1;
     /* PCI Source Selection bits
        11111 = PCI Source #31
        ? ?
        00001 = PCI Source #1
        00000 = Software PCI control bit (SWPCI) only*/
-    PG2FPCILbits.PSS = 0b11011;
+    PG2FPCILbits.PSS = 9;
     
     /* PWM GENERATOR 1 Fault PCI REGISTER HIGH */
     PG2FPCIH     = 0x0000;
@@ -1216,7 +1216,7 @@ void InitPWMGenerator3 (void)
     /* Termination Event Selection bits
        001 = Auto-Terminate: Terminate when PCI source transitions from 
              active to inactive */
-    PG3FPCILbits.TERM = 0;
+    PG3FPCILbits.TERM = 1;
     /* Acceptance Qualifier Polarity Select bit: 0 = Not inverted 1 = Inverted*/
     PG3FPCILbits.AQPS = 0;
     /* Acceptance Qualifier Source Selection bits
@@ -1234,13 +1234,13 @@ void InitPWMGenerator3 (void)
        0 = PCI source is not synchronized to PWM EOC*/
     PG3FPCILbits.PSYNC = 0;
     /* PCI Polarity Select bit 0 = Not inverted 1 = Inverted*/
-    PG3FPCILbits.PPS = 0;
+    PG3FPCILbits.PPS = 1;
     /* PCI Source Selection bits
        11111 = PCI Source #31
        ? ?
        00001 = PCI Source #1
        00000 = Software PCI control bit (SWPCI) only*/
-    PG3FPCILbits.PSS = 0b11011;
+    PG3FPCILbits.PSS = 9;
     
     /* PWM GENERATOR 1 Fault PCI REGISTER HIGH */
     PG3FPCIH     = 0x0000;

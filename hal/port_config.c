@@ -253,7 +253,9 @@ void MapGPIOHWFunction(void)
     TRISEbits.TRISE10 = 1;           // PIN:57 - RE10
     // SW2 : 
     TRISEbits.TRISE11 = 1;           // PIN:59 - RE11
-	
+    
+    //Configuring RP76 as PCI9 input for FLTLAT_OC_OV
+	_PCI9R = 76;
 	/** Diagnostic Interface for LVMC Board etc.
         Re-map UART Channels to the device pins connected to the following 
         PIM pins on the Motor Control Development Boards .

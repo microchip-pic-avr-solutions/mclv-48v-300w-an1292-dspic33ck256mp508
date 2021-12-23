@@ -150,7 +150,7 @@ int main ( void )
                 {
                     EnablePWMOutputsInverterA();
                     uGF.bits.RunMotor = 1;
-                    LED1 = 0;
+                    LED1 = 1;
                 }
 
             }
@@ -193,6 +193,7 @@ int main ( void )
  */
 void ResetParmeters(void)
 {
+    LED1 = 0;
     /* Make sure ADC does not generate interrupt while initializing parameters*/
 	DisableADCInterrupt();
     
@@ -752,6 +753,5 @@ void __attribute__((__interrupt__,no_auto_psv)) _PWMInterrupt()
 {
     ResetParmeters();
     ClearPWMPCIFaultInverterA();
-    LED1 = 1; 
     ClearPWMIF(); 
 }
