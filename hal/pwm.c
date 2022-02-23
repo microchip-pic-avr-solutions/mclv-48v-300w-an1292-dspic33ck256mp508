@@ -1016,9 +1016,9 @@ void InitPWMGenerator2 (void)
 void InitPWMGenerator3 (void)
 {
 
-    /* Initialize PWM GENERATOR 4 CONTROL REGISTER LOW */
+    /* Initialize PWM GENERATOR 3 CONTROL REGISTER LOW */
     PG3CONL      = 0x0000;
-    /* PWM Generator 4 Enable bit : 1 = Is enabled, 0 = Is not enabled */
+    /* PWM Generator 3 Enable bit : 1 = Is enabled, 0 = Is not enabled */
     /* PWM Generator is disabled prior to configuring module */
     PG3CONLbits.ON = 0;
     /* Clock Selection bits
@@ -1036,7 +1036,7 @@ void InitPWMGenerator3 (void)
        000 = PWM Generator produces 1 PWM cycle after triggered */
     PG3CONLbits.TRGCNT = 0;
     
-    /* Initialize PWM GENERATOR 4 CONTROL REGISTER HIGH */
+    /* Initialize PWM GENERATOR 3 CONTROL REGISTER HIGH */
     PG3CONH      = 0x0000;
     /* Master Duty Cycle Register Select bit
        1 = Macro uses the MDC register instead of PG3DC
@@ -1068,50 +1068,50 @@ void InitPWMGenerator3 (void)
        0001 = PWM1 trigger o/p selected by PG1 PGTRGSEL<2:0> bits(PGxEVT<2:0>)*/
     PG3CONHbits.SOCS = 1;
     
-    /* Clear PWM GENERATOR 4 STATUS REGISTER*/
+    /* Clear PWM GENERATOR 3 STATUS REGISTER*/
     PG3STAT      = 0x0000;
-    /* Initialize PWM GENERATOR 4 I/O CONTROL REGISTER LOW */
+    /* Initialize PWM GENERATOR 3 I/O CONTROL REGISTER LOW */
     PG3IOCONL    = 0x0000;
 
     /* Current Limit Mode Select bit
        0 = If PCI current limit is active, then the CLDAT<1:0> bits define 
        the PWM output levels */
     PG3IOCONLbits.CLMOD = 0;
-    /* Swap PWM Signals to PWM4H and PWM4L Device Pins bit 
-       0 = PWM4H/L signals are mapped to their respective pins */
+    /* Swap PWM Signals to PWM3H and PWM3L Device Pins bit 
+       0 = PWM3H/L signals are mapped to their respective pins */
     PG3IOCONLbits.SWAP = 0;
-    /* User Override Enable for PWM4H Pin bit
-       0 = PWM Generator provides data for the PWM4H pin*/
+    /* User Override Enable for PWM3H Pin bit
+       0 = PWM Generator provides data for the PWM3H pin*/
     PG3IOCONLbits.OVRENH = 0;
-    /* User Override Enable for PWM4L Pin bit
-       0 = PWM Generator provides data for the PWM4L pin*/
+    /* User Override Enable for PWM3L Pin bit
+       0 = PWM Generator provides data for the PWM3L pin*/
     PG3IOCONLbits.OVRENL = 0;
-    /* Data for PWM4H/PWM4L Pins if Override is Enabled bits
-       If OVERENH = 1, then OVRDAT<1> provides data for PWM4H.
-       If OVERENL = 1, then OVRDAT<0> provides data for PWM4L */
+    /* Data for PWM3H/PWM3L Pins if Override is Enabled bits
+       If OVERENH = 1, then OVRDAT<1> provides data for PWM3H.
+       If OVERENL = 1, then OVRDAT<0> provides data for PWM3L */
     PG3IOCONLbits.OVRDAT = 0;
     /* User Output Override Synchronization Control bits
        00 = User output overrides via the OVRENL/H and OVRDAT<1:0> bits are 
        synchronized to the local PWM time base (next start of cycle)*/
     PG3IOCONLbits.OSYNC = 0;
-    /* Data for PWM4H/PWM4L Pins if FLT Event is Active bits
-       If Fault is active, then FLTDAT<1> provides data for PWM4H.
-       If Fault is active, then FLTDAT<0> provides data for PWM4L.*/
+    /* Data for PWM3H/PWM3L Pins if FLT Event is Active bits
+       If Fault is active, then FLTDAT<1> provides data for PWM3H.
+       If Fault is active, then FLTDAT<0> provides data for PWM3L.*/
     PG3IOCONLbits.FLTDAT = 0;
-    /* Data for PWM4H/PWM4L Pins if CLMT Event is Active bits
-       If current limit is active, then CLDAT<1> provides data for PWM4H.
-       If current limit is active, then CLDAT<0> provides data for PWM4L.*/
+    /* Data for PWM3H/PWM3L Pins if CLMT Event is Active bits
+       If current limit is active, then CLDAT<1> provides data for PWM3H.
+       If current limit is active, then CLDAT<0> provides data for PWM3L.*/
     PG3IOCONLbits.CLDAT = 0;
-    /* Data for PWM4H/PWM4L Pins if Feed-Forward Event is Active bits
-       If feed-forward is active, then FFDAT<1> provides data for PWM4H.
-       If feed-forward is active, then FFDAT<0> provides data for PWM4L.*/
+    /* Data for PWM3H/PWM3L Pins if Feed-Forward Event is Active bits
+       If feed-forward is active, then FFDAT<1> provides data for PWM3H.
+       If feed-forward is active, then FFDAT<0> provides data for PWM3L.*/
     PG3IOCONLbits.FFDAT = 0;
-    /* Data for PWM4H/PWM4L Pins if Debug Mode is Active and PTFRZ = 1 bits
-       If Debug mode is active and PTFRZ=1,then DBDAT<1> provides PWM4H data.
-       If Debug mode is active and PTFRZ=1,then DBDAT<0> provides PWM4L data. */
+    /* Data for PWM3H/PWM3L Pins if Debug Mode is Active and PTFRZ = 1 bits
+       If Debug mode is active and PTFRZ=1,then DBDAT<1> provides PWM3H data.
+       If Debug mode is active and PTFRZ=1,then DBDAT<0> provides PWM3L data. */
     PG3IOCONLbits.DBDAT = 0;
     
-    /* Initialize PWM GENERATOR 4 I/O CONTROL REGISTER HIGH */    
+    /* Initialize PWM GENERATOR 3 I/O CONTROL REGISTER HIGH */    
     PG3IOCONH    = 0x0000;
     /* Time Base Capture Source Selection bits
        000 = No hardware source selected for time base capture ? software only*/
@@ -1122,24 +1122,24 @@ void InitPWMGenerator3 (void)
     /* PWM Generator Output Mode Selection bits
        00 = PWM Generator outputs operate in Complementary mode*/
     PG3IOCONHbits.PMOD = 0;
-    /* PWM4H Output Port Enable bit
-       1 = PWM Generator controls the PWM4H output pin
-       0 = PWM Generator does not control the PWM4H output pin */
+    /* PWM3H Output Port Enable bit
+       1 = PWM Generator controls the PWM3H output pin
+       0 = PWM Generator does not control the PWM3H output pin */
     PG3IOCONHbits.PENH = 1;
-    /* PWM4L Output Port Enable bit
-       1 = PWM Generator controls the PWM4L output pin
-       0 = PWM Generator does not control the PWM4L output pin */
+    /* PWM3L Output Port Enable bit
+       1 = PWM Generator controls the PWM3L output pin
+       0 = PWM Generator does not control the PWM3L output pin */
     PG3IOCONHbits.PENL = 1;
-    /* PWM4H Output Polarity bit
+    /* PWM3H Output Polarity bit
        1 = Output pin is active-low
        0 = Output pin is active-high*/
     PG3IOCONHbits.POLH = 0;
-    /* PWM4L Output Polarity bit
+    /* PWM3L Output Polarity bit
        1 = Output pin is active-low
        0 = Output pin is active-high*/
     PG3IOCONHbits.POLL = 0;
     
-    /* Initialize PWM GENERATOR 4 EVENT REGISTER LOW*/
+    /* Initialize PWM GENERATOR 3 EVENT REGISTER LOW*/
     PG3EVTL      = 0x0000;
     /* ADC Trigger 1 Post-scaler Selection bits
        00000 = 1:1 */
@@ -1164,7 +1164,7 @@ void InitPWMGenerator3 (void)
        000 = EOC event is the PWM Generator trigger*/
     PG3EVTLbits.PGTRGSEL = 0;
     
-    /* Initialize PWM GENERATOR 4 EVENT REGISTER HIGH */
+    /* Initialize PWM GENERATOR 3 EVENT REGISTER HIGH */
     PG3EVTH      = 0x0000;
     /* FLTIEN: PCI Fault Interrupt Enable bit
        0 = Fault interrupt is disabled */
@@ -1200,7 +1200,7 @@ void InitPWMGenerator3 (void)
        00000 = No offset */
     PG3EVTHbits.ADTR1OFS = 0;
     
-    /* PWM GENERATOR 4 Fault PCI REGISTER LOW */
+    /* PWM GENERATOR 3 Fault PCI REGISTER LOW */
 #ifndef ENABLE_PWM_FAULT
     /* PWM GENERATOR 1 Fault PCI REGISTER LOW */
     PG3FPCIL     = 0x0000;
@@ -1276,42 +1276,42 @@ void InitPWMGenerator3 (void)
     PG3FPCIHbits.TQSS  = 3;
 #endif
     
-    /* PWM GENERATOR 4 Current Limit PCI REGISTER LOW */
+    /* PWM GENERATOR 3 Current Limit PCI REGISTER LOW */
     PG3CLPCIL    = 0x0000;
-    /* PWM GENERATOR 4 Current Limit PCI REGISTER HIGH */
+    /* PWM GENERATOR 3 Current Limit PCI REGISTER HIGH */
     PG3CLPCIH    = 0x0000;
-    /* PWM GENERATOR 4 Feed Forward PCI REGISTER LOW */
+    /* PWM GENERATOR 3 Feed Forward PCI REGISTER LOW */
     PG3FFPCIL    = 0x0000;
-    /* PWM GENERATOR 4 Feed Forward  PCI REGISTER HIGH */
+    /* PWM GENERATOR 3 Feed Forward  PCI REGISTER HIGH */
     PG3FFPCIH    = 0x0000;
-    /* PWM GENERATOR 4 Sync PCI REGISTER LOW */
+    /* PWM GENERATOR 3 Sync PCI REGISTER LOW */
     PG3SPCIL     = 0x0000;
-    /* PWM GENERATOR 4 Sync PCI REGISTER LOW */
+    /* PWM GENERATOR 3 Sync PCI REGISTER LOW */
     PG3SPCIH     = 0x0000;
     
-    /* Initialize PWM GENERATOR 4 LEADING-EDGE BLANKING REGISTER LOW */
+    /* Initialize PWM GENERATOR 3 LEADING-EDGE BLANKING REGISTER LOW */
     PG3LEBL      = 0x0000;
-    /* Initialize PWM GENERATOR 4 LEADING-EDGE BLANKING REGISTER HIGH*/
+    /* Initialize PWM GENERATOR 3 LEADING-EDGE BLANKING REGISTER HIGH*/
     PG3LEBH      = 0x0000;
     
-    /* Initialize PWM GENERATOR 4 PHASE REGISTER */
+    /* Initialize PWM GENERATOR 3 PHASE REGISTER */
     PG3PHASE     = 0x0000;
-    /* Initialize PWM GENERATOR 4 DUTY CYCLE REGISTER */
+    /* Initialize PWM GENERATOR 3 DUTY CYCLE REGISTER */
     PG3DC        = MIN_DUTY;
-    /* Initialize PWM GENERATOR 4 DUTY CYCLE ADJUSTMENT REGISTER */
+    /* Initialize PWM GENERATOR 3 DUTY CYCLE ADJUSTMENT REGISTER */
     PG3DCA       = 0x0000;
-    /* Initialize PWM GENERATOR 4 PERIOD REGISTER */
+    /* Initialize PWM GENERATOR 3 PERIOD REGISTER */
     PG3PER       = 0x0000;
-    /* Initialize PWM GENERATOR 4 DEAD-TIME REGISTER LOW */
+    /* Initialize PWM GENERATOR 3 DEAD-TIME REGISTER LOW */
     PG3DTL       = DDEADTIME;
-    /* Initialize PWM GENERATOR 4 DEAD-TIME REGISTER HIGH */
+    /* Initialize PWM GENERATOR 3 DEAD-TIME REGISTER HIGH */
     PG3DTH       = DDEADTIME;
 
-    /* Initialize PWM GENERATOR 4 TRIGGER A REGISTER */
+    /* Initialize PWM GENERATOR 3 TRIGGER A REGISTER */
     PG3TRIGA     = 0x0000;
-    /* Initialize PWM GENERATOR 4 TRIGGER B REGISTER */
+    /* Initialize PWM GENERATOR 3 TRIGGER B REGISTER */
     PG3TRIGB     = 0x0000;
-    /* Initialize PWM GENERATOR 4 TRIGGER C REGISTER */
+    /* Initialize PWM GENERATOR 3 TRIGGER C REGISTER */
     PG3TRIGC     = 0x0000;
     
 }

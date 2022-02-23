@@ -79,7 +79,9 @@
         
 #define INVERTERA_PWM_TRIGA      PG1TRIGA 
 #define INVERTERA_PWM_TRIGB      PG1TRIGB   
-#define INVERTERA_PWM_TRIGC      PG1TRIGC         
+#define INVERTERA_PWM_TRIGC      PG1TRIGC      
+        
+#define PWM_FAULT_STATUS        PG1STATbits.FLTACT
         
 #define _PWMInterrupt           _PWM1Interrupt
 #define ClearPWMIF()            _PWM1IF = 0        

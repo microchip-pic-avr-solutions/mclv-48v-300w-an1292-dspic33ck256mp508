@@ -139,10 +139,10 @@ int main ( void )
         {
             DiagnosticsStepMain();
             BoardService();
-            
+
             if (IsPressed_Button1())
             {
-                if  (uGF.bits.RunMotor == 1)
+                if  ((uGF.bits.RunMotor == 1) || (PWM_FAULT_STATUS == 1))
                 {
                     ResetParmeters();
                 }
@@ -162,7 +162,6 @@ int main ( void )
                     uGF.bits.ChangeSpeed = !uGF.bits.ChangeSpeed;
                 }
             }
-
         }
 
     } // End of Main loop

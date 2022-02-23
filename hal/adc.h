@@ -74,9 +74,6 @@
 #define ADCBUF_VBUS_A           ADCBUF15
 #define ADCBUF_MOSFET_TEMP_A    ADCBUF18
 
-/* This defines number of current offset samples for averaging 
- * If the 2^n samples are considered specify n(in this case 2^7(= 128)=> 7*/
-#define  CURRENT_OFFSET_SAMPLE_SCALER         7
 #ifdef SINGLE_SHUNT       
 #define EnableADCInterrupt()   _ADCAN0IE = 1
 #define DisableADCInterrupt()  _ADCAN0IE = 0
