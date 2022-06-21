@@ -42,7 +42,8 @@
          "Motor Control",
 		 "PMSM",
 		 "Sensorless Control",
-		 "FOC"
+		 "FOC",
+		 "dsPIC"
       ]
    }
 }
