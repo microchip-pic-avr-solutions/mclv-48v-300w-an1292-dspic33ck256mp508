@@ -5,9 +5,7 @@
 ## 1. INTRODUCTION
 <p style='text-align: justify;'>
 This document describes the setup requirements for running the Sensorless FOC algorithm using
-PLL Estimator, which is referenced in AN1292 “Sensorless Field Oriented Control (FOC) for a Permanent Magnet Synchronous Motor (PMSM) Using a PLL Estimator and Field Weakening (FW)”
-using MCLV-48V-300W Inverter Board and dsPIC33CK256MP508 Motor Control Dual In-line Module
-(DIM).</p>
+PLL Estimator, which is referenced in AN1292 “Sensorless Field Oriented Control (FOC) for a Permanent Magnet Synchronous Motor (PMSM) Using a PLL Estimator and Field Weakening (FW)” using MCLV-48V-300W Inverter Board and dsPIC33CK256MP508 Motor Control Dual In-line Module (DIM).</p>
 
 
 
@@ -127,7 +125,7 @@ Follow below instructions step by step to setup and run the motor control demo a
        <img  src="images/idedeviceselection.png"></p>
   
 
-2. <p style='text-align: leftjustify;'> Set the project <span style="font-family:Courier New; font-size:;">pmsm.X </span>as main project by right clicking on the project name and selecting “Set as Main Project” as shown. The project <b>“pmsm”</b> will then appear in bold.</p>
+2. <p style='text-align: leftjustify;'> Set the project <span style="font-family:Courier New; font-size:;">pmsm.X </span>as main project by right clicking on the project name and selecting 'Set as Main Project' as shown. The project <b>'pmsm'</b> will then appear in bold.</p>
     <p align="left">
      <img  src="images/ideprojectsetup.png"></p>
  
@@ -166,12 +164,12 @@ Follow below instructions step by step to setup and run the motor control demo a
         <p align="left">
         <img  src="images/projectpropertiessettings.png"></p>
 
-5. <p style='text-align: justify;'> Ensure that the checkbox <b>“Load symbols when programming or building for production (slows process)”</b> is checked, which is under the “Loading” category of the Project Properties window.</p>        
+5. <p style='text-align: justify;'> Ensure that the checkbox <b>'Load symbols when programming or building for production (slows process)'</b> is checked, which is under the 'Loading' category of the Project Properties window.</p>        
         
       <p align="left">
       <img  src="images/loadvariables.png"></p>
 
-6. <p style='text-align: justify;'>	 To build the project (in this case pmsm.X) and program the device dsPIC33CK256MP508, click <b>“Make and Program Device Main project”</b> on the toolbar.</p>
+6. <p style='text-align: justify;'>	 To build the project (in this case pmsm.X) and program the device dsPIC33CK256MP508, click <b>'Make and Program Device Main project'</b> on the toolbar.</p>
     <p align="left">
     <img  src="images/deviceprogramming.png"></p>
   
@@ -185,7 +183,7 @@ Follow below instructions step by step to setup and run the motor control demo a
      <img  src="images/pushbuttons.png"></p>
  
 
-9.  <p style='text-align: justify;'> The motor speed can be varied using the potentiometer (labeled “POT1”).</p>
+9.  <p style='text-align: justify;'> The motor speed can be varied using the potentiometer (labeled <b>'POT1'</b>).</p>
     <p align="left">
     <img  src="images/potentiometer.png"></p>
 
@@ -219,7 +217,7 @@ Follow below instructions step by step to setup and run the motor control demo a
        <img  src="images/x2cselection.png"></p>
  
 
-5. Open the X2C-Scope Configuration window and in <b>“Select project”</b> menu, select <b>pmsm</b> project as shown.
+5. Open the X2C-Scope Configuration window and in <b>'Select project'</b> menu, select <b>pmsm</b> project as shown.
     <p align="left">
     <img  src="images/x2cprojectselection.png"></p>
 
@@ -230,17 +228,17 @@ Follow below instructions step by step to setup and run the motor control demo a
  
 
 
-7. Once the COM port is detected, click on “Disconnected” and turn to “Connected”, to establish a serial communication between Host PC and the board.
+7. Once the COM port is detected, click on <b>'Disconnected'</b> and turn to <b>'Connected'</b>, to establish a serial communication between Host PC and the board.
      <p align="left">
     <img  src="images/x2cconnectionbutton.png"></p>
 
 
-8. Set the “Project Setup” as shown below and click “Set Values”. Set Scope sample time as interval at which <span style="font-family:Courier New; font-size:1;">X2CScopeUpdate()</span> is called. In this application it is every 50µs.
+8. Set the <b>'Project Setup'</b> as shown below and click <b>'Set Value'</b>. Set Scope sample time as interval at which <span style="font-family:Courier New; font-size:1;">X2CScopeUpdate()</span> is called. In this application it is every 50µs.
       <p align="left">
       <img  src="images/x2cprojectsetup.png"></p>
 
 
-9. When the setup is established, click on open scope View (under sub window “Data Views”), this opens 'Scope Window'.
+9. When the setup is established, click on open scope View (under sub window <b>'Data Views'</b>), this opens 'Scope Window'.
      <p align="left">
       <img  src="images/x2cdataview.png"></p>
     	     
@@ -250,12 +248,12 @@ To view data plots continuously, uncheck<span style="font-family:Courier New; fo
     <p align="left">
     <img  src="images/x2cdatapointselection.png"></p>
 
-11.	Click on SAMPLE, then X2C-Scope window shows variables in real time, which is updated automatically.
+11.	Click on <b>'SAMPLE'</b>, then X2C-Scope window shows variables in real time, which is updated automatically.
      <p align="left">
      <img  src="images/x2csample.png"></p>
  
 
-12.	Click on ABORT to stop.
+12.	Click on <b>'ABORT'</b> to stop.
      <p align="left">
      <img  src="images/x2cabort.png"></p>
  
