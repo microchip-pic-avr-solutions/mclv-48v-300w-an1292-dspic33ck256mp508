@@ -35,7 +35,7 @@ To clone or download this application from Github, go to the [main page of this 
 ## 3. HARDWARE SETUP
 <p style='text-align: justify;'>This section describes hardware setup required for the demonstration.</p>
 
-1. <p style='text-align: justify;'> Motor currents are amplified on the MCLV-48V-300W Inverter Board; it can also be amplified by the amplifiers internal to the dsPIC33CK256MP508 populated on the DIM. By default, the firmware and DIM are configured to sample and convert internal amplifier outputs ('internal Op Amp configuration'), measuring the motor currents needed for implementing FOC.</p>
+1. <p style='text-align: justify;'> Motor currents are amplified by the amplifiers ( U10 and U11 )on the MCLV-48V-300W Inverter Board. It can also be amplified by the amplifiers internal to the dsPIC33CK256MP508 populated on the DIM. By default, the firmware and DIM are configured to sample and convert internal amplifier outputs ('internal Op Amp configuration'), measuring the motor currents needed for implementing FOC.</p>
 
      <p style='text-align: justify;'> The Table-1 summarizes the resistors to be populated and removed to convert the DIM from internal Op Amp configuration to external Op Amp configuration or vice versa.</p>
 
@@ -45,7 +45,7 @@ To clone or download this application from Github, go to the [main page of this 
 
 
 
-2. <p style='text-align: justify;'> Insert the dsPIC33CK256MP508 Motor Control DIM into the DIM Interface Connector J8 provided on the MCLV-48V-300W Inverter Board. Make sure the DIM is placed correctly and oriented before going ahead.</p>
+2. <p style='text-align: justify;'> Insert the dsPIC33CK256MP508 Motor Control DIM into the DIM Interface Connector J8 provided on the MCLV-48V-300W Inverter Board. Make sure the DIM is placed and oriented correctly.</p>
 
     <p align="left">
     <img  src="images/dimconnected.PNG"></p>
@@ -259,11 +259,11 @@ To view data plots continuously, uncheck<span style="font-family:Courier New; fo
  
  ## 6. REFERENCES:
 For additional information, refer following documents or links.
-1. AN1292 Application Note “Sensorless Field Oriented Control (FOC) for a Permanent Magnet Synchronous Motor (PMSM) Using a PLL Estimator and Field Weakening (FW)”
-2. AN1299 Application Note “Single-Shunt Three-Phase Current Reconstruction Algorithm for Sensorless FOC of a PMSM”
+1. AN1292 Application Note “[Sensorless Field Oriented Control (FOC) for a Permanent Magnet Synchronous Motor (PMSM) Using a PLL Estimator and Field Weakening (FW)](https://ww1.microchip.com/downloads/aemDocuments/documents/OTH/ApplicationNotes/ApplicationNotes/01292A.pdf)”
+2. AN1299 Application Note “[Single-Shunt Three-Phase Current Reconstruction Algorithm for Sensorless FOC of a PMSM](http://ww1.microchip.com/downloads/en/appnotes/01299a.pdf)”
 3. MCLV-48V-300W Inverter Board User’s Guide 
-4. dsPIC33CK256MP508 Family datasheet (DS70005349)
-5. Family Reference manuals (FRM) of dsPIC33CK256MP508 family
+4. dsPIC33CK256MP508 Family datasheet [(DS70005349)](https://ww1.microchip.com/downloads/en/DeviceDoc/dsPIC33CK256MP508-Family-Data-Sheet-DS70005349H.pdf)
+5. [Family Reference manuals (FRM) of dsPIC33CK256MP508 family](https://www.microchip.com/en-us/product/dsPIC33CK256MP508#document-table)
 6. MPLAB® X IDE User’s Guide (DS50002027) or MPLAB® X IDE help
 7. [MPLAB® X IDE installation](http://microchipdeveloper.com/mplabx:installation)
 8. [MPLAB® XC16 Compiler installation](http://microchipdeveloper.com/xc16:installation)
