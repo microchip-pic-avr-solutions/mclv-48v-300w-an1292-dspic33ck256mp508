@@ -17,10 +17,10 @@ To clone or download this application from Github, go to the [main page of this 
 >In this document, hereinafter this firmware package is referred as firmware.
 ### 2.2 Software Tools Used for Testing the firmware
 
-- MPLAB® X IDE v5.50 
-- MPLAB® XC16 Compiler v1.70
-- MPLAB® X IDE Plugin: X2C-Scope v1.3.0 
-- DFP: dsPIC33CK-MP_DFP v1.6.176
+- MPLAB® X IDE v6.00 
+- MPLAB® XC16 Compiler v2.00
+- MPLAB® X IDE Plugin: X2C-Scope v1.3.3 
+- DFP: dsPIC33CK-MP_DFP v1.9.228
 > **_NOTE:_**
 >The software used for testing the firmware prior to release is listed above. It is recommended to use the version listed above or later versions for building the firmware.
 ### 2.3 Hardware Tools Required for the Demonstration
@@ -87,14 +87,8 @@ Install MPLAB X IDE and MPLAB XC16 Compiler versions that support the device dsP
 <p style='text-align: justify;'>
 X2C-Scope is a MPLAB X IDE plugin that allows a developer to interact with an application while the application program is running. X2C-Scope enables you to read, write, and plot global variables (for motor control) in real time. It communicates with the target using the UART. To use X2C-Scope, the plugin must be installed:</p>
 
-- In MPLAB X IDE, select <i>Tools>Plugins</i> and click on the Available Plugins tab.
-- Select X2C-Scope plug-in by checking its check box, and then click Install.
-- Look for tool X2C-Scope under <i>Tools>Embedded.</i>
+To set-up and use X2C-Scope, refer the instructions provided in the [webpage.](https://x2cscope.github.io/docs/MPLABX_Plugin.html)
 
-<p align="left">
-  <img  src="images/x2cscopeconfiguration.png"></p>
- 
-<br />
 
 ## 5.  BASIC DEMONSTRATION
 ### 5.1 Firmware Description
@@ -261,12 +255,13 @@ To view data plots continuously, uncheck<span style="font-family:Courier New; fo
 For additional information, refer following documents or links.
 1. AN1292 Application Note “[Sensorless Field Oriented Control (FOC) for a Permanent Magnet Synchronous Motor (PMSM) Using a PLL Estimator and Field Weakening (FW)](https://ww1.microchip.com/downloads/aemDocuments/documents/OTH/ApplicationNotes/ApplicationNotes/01292A.pdf)”
 2. AN1299 Application Note “[Single-Shunt Three-Phase Current Reconstruction Algorithm for Sensorless FOC of a PMSM](http://ww1.microchip.com/downloads/en/appnotes/01299a.pdf)”
-3. MCLV-48V-300W Inverter Board User’s Guide 
-4. dsPIC33CK256MP508 Family datasheet [(DS70005349)](https://ww1.microchip.com/downloads/en/DeviceDoc/dsPIC33CK256MP508-Family-Data-Sheet-DS70005349H.pdf)
-5. [Family Reference manuals (FRM) of dsPIC33CK256MP508 family](https://www.microchip.com/en-us/product/dsPIC33CK256MP508#document-table)
-6. MPLAB® X IDE User’s Guide (DS50002027) or MPLAB® X IDE help
-7. [MPLAB® X IDE installation](http://microchipdeveloper.com/mplabx:installation)
-8. [MPLAB® XC16 Compiler installation](http://microchipdeveloper.com/xc16:installation)
+3. MCLV-48V-300W Inverter Board User’s Guide (DS50003297) 
+4. dsPIC33CK256MP508 Motor Control Dual In-Line Module (DIM) Information Sheet (DS50003063)
+5. dsPIC33CK256MP508 Family datasheet [(DS70005349)](https://ww1.microchip.com/downloads/en/DeviceDoc/dsPIC33CK256MP508-Family-Data-Sheet-DS70005349H.pdf)
+6. [Family Reference manuals (FRM) of dsPIC33CK256MP508 family](https://www.microchip.com/en-us/product/dsPIC33CK256MP508#document-table)
+7. MPLAB® X IDE User’s Guide (DS50002027) or MPLAB® X IDE help
+8. [MPLAB® X IDE installation](http://microchipdeveloper.com/mplabx:installation)
+9. [MPLAB® XC16 Compiler installation](http://microchipdeveloper.com/xc16:installation)
 
 
 

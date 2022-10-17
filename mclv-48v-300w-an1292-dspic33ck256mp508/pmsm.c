@@ -122,8 +122,9 @@ int main ( void )
 {
     InitOscillator();
     SetupGPIOPorts();
-    /* Turn on LED2 to indicate the device is programmed */
-    LED2 = 1;
+
+    /* Turn on LED1 to indicate the device is programmed */
+    LED1 = 1;
     /* Initialize Peripherals */
     InitPeripherals();
     DiagnosticsInit();
@@ -137,6 +138,7 @@ int main ( void )
         
         while(1)
         {
+            ResetSingleShuntSamplePoint(&singleShuntParam);
             DiagnosticsStepMain();
             BoardService();
 
@@ -150,18 +152,18 @@ int main ( void )
                 {
                     EnablePWMOutputsInverterA();
                     uGF.bits.RunMotor = 1;
-                    LED1 = 1;
                 }
 
             }
-            // Monitoring for Button 2 press in LVMC
-            if (IsPressed_Button2())
+            if(IsPressed_Button2())
             {
                 if ((uGF.bits.RunMotor == 1) && (uGF.bits.OpenLoop == 0))
                 {
                     uGF.bits.ChangeSpeed = !uGF.bits.ChangeSpeed;
                 }
             }
+            /* LED2 is used as motor run Status */
+            LED2 = uGF.bits.RunMotor;
         }
 
     } // End of Main loop
@@ -192,7 +194,6 @@ int main ( void )
  */
 void ResetParmeters(void)
 {
-    LED1 = 0;
     /* Make sure ADC does not generate interrupt while initializing parameters*/
 	DisableADCInterrupt();
     
@@ -200,8 +201,8 @@ void ResetParmeters(void)
     /* Initialize Single Shunt Related parameters */
     SingleShunt_InitializeParameters(&singleShuntParam);
     INVERTERA_PWM_TRIGA = ADC_SAMPLING_POINT;
-    INVERTERA_PWM_TRIGB = LOOPTIME_TCY>>1;
-    INVERTERA_PWM_TRIGC = LOOPTIME_TCY-1;
+    INVERTERA_PWM_TRIGB = LOOPTIME_TCY>>2;
+    INVERTERA_PWM_TRIGC = LOOPTIME_TCY>>1;
     INVERTERA_PWM_PHASE3 = MIN_DUTY;
     INVERTERA_PWM_PHASE2 = MIN_DUTY;
     INVERTERA_PWM_PHASE1 = MIN_DUTY;
@@ -338,7 +339,6 @@ void DoControl( void )
             ctrlParm.targetSpeed = (__builtin_mulss(measureInputs.potValue,
                     MAXIMUMSPEED_ELECTR-NOMINALSPEED_ELECTR)>>15)+
                     NOMINALSPEED_ELECTR;  
-
         }
         else
         {
@@ -447,6 +447,7 @@ void DoControl( void )
         temp_qref_pow_q15 = Q15(MAX_VOLTAGE_VECTOR) - temp_qref_pow_q15;
         piInputIq.piState.outMax = _Q15sqrt (temp_qref_pow_q15);
         piInputIq.piState.outMin = - piInputIq.piState.outMax;
+
         /* PI control for Q */
         piInputIq.inMeasure  = idq.q;
         piInputIq.inReference  = ctrlParm.qVqRef;
@@ -515,7 +516,7 @@ void __attribute__((__interrupt__,no_auto_psv)) _ADCInterrupt()
             /* Ibus is measured and offset removed from measurement*/
             singleShuntParam.Ibus2 = (int16_t)(ADCBUF_INV_A_IBUS) - 
                                             measureInputs.current.offsetIbus;
-            ADCON3Lbits.SWCTRG = 1;
+
         break;
 
         default:
@@ -583,8 +584,8 @@ void __attribute__((__interrupt__,no_auto_psv)) _ADCInterrupt()
     {
         INVERTERA_PWM_TRIGA = ADC_SAMPLING_POINT;
 #ifdef SINGLE_SHUNT
-        INVERTERA_PWM_TRIGB = LOOPTIME_TCY>>1;
-        INVERTERA_PWM_TRIGC = LOOPTIME_TCY-1;
+        INVERTERA_PWM_TRIGB = LOOPTIME_TCY>>2;
+        INVERTERA_PWM_TRIGC = LOOPTIME_TCY>>1;
         singleShuntParam.pwmDutycycle1.dutycycle3 = MIN_DUTY;
         singleShuntParam.pwmDutycycle1.dutycycle2 = MIN_DUTY;
         singleShuntParam.pwmDutycycle1.dutycycle1 = MIN_DUTY;
@@ -684,9 +685,13 @@ void CalculateParkAngle(void)
     else 
     {
         /* In closed loop slowly decrease the offset add to the estimated angle */
-        if (estimator.qRhoOffset > 0)
+        if(estimator.qRhoOffset > 0)
         {
             estimator.qRhoOffset--;
+        }
+        else if(estimator.qRhoOffset < 0)
+        {
+           estimator.qRhoOffset++; 
         }
     }
 }
