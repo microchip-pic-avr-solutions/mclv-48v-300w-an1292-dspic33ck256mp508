@@ -1,9 +1,11 @@
 ![image](images/microchip.jpg) 
-## Sensorless FOC using PLL Estimator for PMSM - MCLV-48V-300W and dsPIC33CK256MP508 Motor Control DIM
+## Sensorless FOC using PLL Estimator for PMSM : MCLV-48V-300W and dsPIC33CK256MP508 Motor Control DIM
 
 
 ## 1. INTRODUCTION
-This document describes the setup requirements for running the Sensorless FOC algorithm using PLL Estimator, which is referenced in **AN1292 “Sensorless Field Oriented Control (FOC) for a Permanent Magnet Synchronous Motor (PMSM) Using a PLL Estimator and Field Weakening (FW)”** using **MCLV-48V-300W Inverter Board** and **dsPIC33CK256MP508 Motor Control Dual In-line Module (DIM).**
+This document describes the setup requirements for driving a Permanent Magnet Synchronous Motor (PMSM) using Sensorless Field Oriented Control (FOC) and PLL Estimator Algorithms on the hardware platform MCLV-48V-300W Inverter Board and dsPIC33CK256MP508 Motor Control Dual In-line Module (DIM).
+
+For details about PLL estimator refer to Microchip application note [AN1292](https://ww1.microchip.com/downloads/aemDocuments/documents/OTH/ApplicationNotes/ApplicationNotes/01292A.pdf) “Sensorless Field Oriented Control (FOC) for a Permanent Magnet Synchronous Motor (PMSM) Using a PLL Estimator and Field Weakening (FW)”
 
 </br>
 
@@ -13,13 +15,13 @@ This document describes the setup requirements for running the Sensorless FOC al
 
 To clone or download this application firmware on GitHub, 
 - Navigate to the [main page of this repository](https://github.com/microchip-pic-avr-solutions/mclv-48v-300w-an1292-dspic33ck256mp508) and 
-- On the tab **<> Code**, above the list of files in the right-hand corner, click Code, then from the menu, click **Download ZIP** or copy the repository URL **to clone.**
-> **_NOTE:_**
+- On the tab **<> Code**, above the list of files in the right-hand corner, click Code, then from the menu, click **Download ZIP** or copy the repository URL to **clone.**
+> **Note**
 >In this document, hereinafter this firmware package is referred as **firmware.**
 ### 2.2 Software Tools Used for Testing the firmware
 
 - MPLAB® X IDE **v6.00** 
-- DFP:**dsPIC33CK-MP_DFP v1.9.228**
+- DFP: **dsPIC33CK-MP_DFP v1.9.228**
 - MPLAB® XC16 Compiler **v2.00**
 - MPLAB® X IDE Plugin: **X2C-Scope v1.3.3** 
 > **Note:** </br>
@@ -55,12 +57,12 @@ This section describes hardware setup required for the demonstration.
      <p align="left" >
       <img  src="images/motorconnection.png"></p>
 
-4. Plug the 24V power supply to **connector J1** on the MCLV-48V-300W Inverter Board. Alternatively, the Inverter Board can also be powered through Connector J3.
+4. Plug the 24V power supply to **connector J1** on the MCLV-48V-300W Inverter Board. Alternatively, the Inverter Board can also be powered through connector J3.
       <p align="left">
       <img  src="images/mclvpower.png"></p>
  
 
- 5. The board has an onboard programmer **‘PICkit™ On Board (PKoBv4)’** , which can be used for programming or debugging the microcontroller or dsPIC DSC on the DIM. To use the onboard programmer, connect a micro-USB cable between the Host PC and **connector J16** on the MCLV-48V-300W Inverter Board.
+ 5. The board has an onboard programmer **PICkit™ On Board (PKoBv4)** , which can be used for programming or debugging the microcontroller or dsPIC DSC on the DIM. To use the onboard programmer, connect a micro-USB cable between the Host PC and **connector J16** on the MCLV-48V-300W Inverter Board.
       <p align="left">
      <img  src="images/mclvpkob4.png"></p>
 
@@ -79,7 +81,7 @@ To get help on
 - MPLAB X IDE installation, refer [link](https://microchipdeveloper.com/mplabx:installation)
 - MPLAB XC16 Compiler installation steps, refer [link](https://microchipdeveloper.com/xc16:installation)
 
-If MPLAB IDE v8 or earlier is already installed on your computer, then run the MPLAB driver switcher (Installed when MPLAB®X IDE is installed) to switch from MPLAB IDE v8 drivers to MPLAB X IDE drivers. If you have Windows 8 or 10, you must run the MPLAB driver switcher in **Administrator Mode.** To run the Device Driver Switcher GUI application as administrator, right-click on the executable (or desktop icon) and select Run as Administrator. For more details, refer to the MPLAB X IDE help topic **“Before You Begin: Install the USB Device Drivers (For Hardware Tools): USB Driver Installation for Windows Operating Systems.”**
+If MPLAB IDE v8 or earlier is already installed on your computer, then run the MPLAB driver switcher (Installed when MPLAB®X IDE is installed) to switch from MPLAB IDE v8 drivers to MPLAB X IDE drivers. If you have Windows 8 or 10, you must run the MPLAB driver switcher in **Administrator Mode**. To run the Device Driver Switcher GUI application as administrator, right-click on the executable (or desktop icon) and select **Run as Administrator**. For more details, refer to the MPLAB X IDE help topic **“Before You Begin: Install the USB Device Drivers (For Hardware Tools): USB Driver Installation for Windows Operating Systems.”**
 
 ### 4.2 Setup: X2C-SCOPE
 X2C-Scope is an MPLAB X IDE plugin that allows developers to interact with an application while it runs. X2C-Scope enables you to read, write, and plot global variables (for motor con-trol) in real-time. It communicates with the target using the UART. To use X2C-Scope, the plugin must be installed. To set up and use X2C-Scope, refer to the instructions provided on the [web page](https://x2cscope.github.io/docs/MPLABX_Plugin.html).
@@ -91,9 +93,9 @@ The firmware version needed for the demonstration is mentioned in the section [M
 The Motor Control Demo application uses a push button to start or stop the motor and a potentiometer to vary the speed of the motor. This Motor Control Demo Application config-ures and uses peripherals like PWM, ADC, UART, etc. For more details, refer to Microchip Application note **AN1292, “Sensorless Field Oriented Control (FOC) for a Permanent Magnet Synchronous Motor (PMSM) Using a PLL Estimator and Field Weakening (FW),”** available on the [Microchip website.]((https://www.microchip.com/).)
 
 > **Note:**</br>
-     > The project may not build correctly in Windows OS if the Maximum path length of any source file in the project is more than 260 characters. In case the absolute path exceeds or nears the maximum length, do any (or both) of the following:
-     > - Shorten the directory name containing the firmware used in this demonstration. If you renamed the directory, consider the new name while reading the instructions provided in the upcoming sections of the document.
-     > - Place firmware in a location such that the total path length of each file included in the projects does not exceed the Maximum Path length specified. </br>
+> The project may not build correctly in Windows OS if the Maximum path length of any source file in the project is more than 260 characters. In case the absolute path exceeds or nears the maximum length, do any (or both) of the following:
+> - Shorten the directory name containing the firmware used in this demonstration. If you renamed the directory, consider the new name while reading the instructions provided in the upcoming sections of the document.
+> - Place firmware in a location such that the total path length of each file included in the projects does not exceed the Maximum Path length specified. </br>
 > Refer to MPLAB X IDE help topic **“Path, File, and Folder Name Restrictions”** for details. 
 
 ### 5.2 Basic Demonstration
@@ -110,7 +112,7 @@ Follow the below instructions, step by step, to set up and run the motor control
  
 
 	
-3. Open <code>**userparms.h** </code> (under **pmsm.X > Header Files**) in the project **pmsm.X.**  
+3. Open <code>**userparms.h** </code> (**pmsm.X > Header Files**) in the project **pmsm.X.**  
      - Ensure that the macros <code>**TUNING</code>, <code>OPEN_LOOP_FUNCTIONING</code>, <code>TORQUE_MODE</code>, and <code>SINGLE_SHUNT</code>** is not defined in the header file<code> **userparms.h.**</code>
           <p align="left"><img  src="images/configParam.png"></p>
 
@@ -125,9 +127,9 @@ Follow the below instructions, step by step, to set up and run the motor control
 >By default, the firmware uses phase currents measured across the phase shunt resistors on two of the half-bridges of the three-phase inverter (**‘dual shunt configuration’**) to implement FOC.
 
 
-4. Right-click on the project **pmsm.X** and select **Properties** to open its **Project Properties** Dialog. Click the **Conf: [default]** category to reveal the general project configuration information. The development tools used for testing the firmware are listed in section [2.2 Software Tools Used for Testing the firmware.](#22-software-tools-used-for-testing-the-firmware).
+4. Right-click on the project **pmsm.X** and select **Properties** to open its **Project Properties** Dialog. Click the **Conf:[default]** category to reveal the general project configuration information. The development tools used for testing the firmware are listed in section [2.2 Software Tools Used for Testing the firmware.](#22-software-tools-used-for-testing-the-firmware).
 
-     In the **Conf-default** category window: 
+     In the **Conf:[default]** category window: 
      - Ensure the selected **Device** is **dsPIC33CK256MP508.**
      - Select the **Connected Hardware Tool** to be used for programming and debugging. 
      - Select the specific Device Family Pack (DFP) from the available list of **Packs.** In this case, **dsPIC33CK-MP_DFP 1.9.228** is selected. 
@@ -172,9 +174,9 @@ Press the push button **SW2** again to revert the speed of the motor to its nomi
 
 
 >**Note:**</br>
->The macros END_SPEED_RPM, <code>NOMINAL_SPEED_RPM</code>, and <code>MAXIMUM_SPEED_RPM</code> are specified in the header file <code>**userparms. h**</code> included in the project **pmsm.X.** The macros <code>NOMINAL_SPEED_RPM</code> and <code>MAXIMUM_SPEED_RPM</code> are defined as per the Motor manu-facturer’s specifications. Exceeding manufacture specifications may damage the motor or the board or both.
+>The macros <code>END_SPEED_RPM</code>, <code>NOMINAL_SPEED_RPM</code>, and <code>MAXIMUM_SPEED_RPM</code> are specified in the header file <code>**userparms.h**</code> included in the project **pmsm.X.** The macros <code>NOMINAL_SPEED_RPM</code> and <code>MAXIMUM_SPEED_RPM</code> are defined as per the Motor manu-facturer’s specifications. Exceeding manufacture specifications may damage the motor or the board or both.
 
-## 5.3  Data visualization through X2C-Scope Plug-in of MPLABX
+## 5.3  Data visualization through X2C-Scope Plug-in of MPLAB X
 
 X2C-Scope is a third-party plug-in in MPLAB X, which helps in real-time diagnostics. The application firmware comes with the initialization needed to interface the controller with the host PC to enable data visualization through the X2C-Scope plug-in. Ensure the X2C-Scope plug-in is installed. For more information on how to set up a plug-in, refer to either the [Microchip Developer Help page](https://microchipdeveloper.com/mplabx:tools-plugins-available) or the [web page.](https://x2cscope.github.io/docs/MPLABX_Plugin.html)
  
@@ -218,8 +220,8 @@ X2C-Scope is a third-party plug-in in MPLAB X, which helps in real-time diagnost
      <p align="left">
       <img  src="images/x2cdataview.png"></p>
     	     
-9. In the **Scope Window**, select the variables that must be watched. To do this, click on the Source against each channel, and a window **Select Variables** opens on the screen. From the available list, the required variable can be chosen. Ensure checkboxes **Enable** and **Visible** are checked for the variables to be plotted.
-To view data plots continuously, uncheck **Single-shot.** When **Single-shot** is checked, it captures the data once and stops. The **Sample time factor** value multiplied by **Sampletime** decides the time difference between any two consecutive data points on the plot.
+9. In the **Scope Window**, select the variables that must be watched. To do this, click on the **Source** against each channel, and a window **Select Variables** opens on the screen. From the available list, the required variable can be chosen. Ensure checkboxes **Enable** and **Visible** are checked for the variables to be plotted.
+To view data plots continuously, uncheck **Single-shot.** When **Single-shot** is checked, it captures the data once and stops. The **Sample time factor** value multiplied by **Sample time** decides the time difference between any two consecutive data points on the plot.
     <p align="left">
     <img  src="images/x2cdatapointselection.png"></p>
 
