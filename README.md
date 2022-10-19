@@ -1,7 +1,5 @@
 ![image](images/microchip.jpg) 
-## MCLV-48V-300W dsPIC33CK256MP508 AN1292
-
-## AN1292 Demonstration ReadMe for MCLV-48V-300W Inverter Board with dsPIC33CK256MP508 Motor Control DIM(MPLAB® X IDE)
+## Sensorless FOC using PLL Estimator for PMSM - MCLV-48V-300W and dsPIC33CK256MP508 Motor Control DIM
 
 
 ## 1. INTRODUCTION
@@ -112,17 +110,17 @@ Follow the below instructions, step by step, to set up and run the motor control
  
 
 	
-3. Open **userparms.h** (under **pmsm.X > Header Files**) in the project **pmsm.X.**  
-     - Ensure that the macros **TUNING, OPEN_LOOP_FUNCTIONING, TORQUE_MODE, and SINGLE_SHUNT** is not defined in the header file **userparms.h.**
+3. Open <code>**userparms.h** </code> (under **pmsm.X > Header Files**) in the project **pmsm.X.**  
+     - Ensure that the macros <code>**TUNING</code>, <code>OPEN_LOOP_FUNCTIONING</code>, <code>TORQUE_MODE</code>, and <code>SINGLE_SHUNT</code>** is not defined in the header file<code> **userparms.h.**</code>
           <p align="left"><img  src="images/configParam.png"></p>
 
-     - When internal amplifiers are used for current amplification (referred to as **internal op-amp configuration**), **define** the macro **INTERNAL_OPAMP_CONFIG** in **userparms.h.**
+     - When internal amplifiers are used for current amplification (referred to as **internal op-amp configuration**), **define** the macro <code>**INTERNAL_OPAMP_CONFIG**</code> in <code>**userparms.h.**</code>
           <p align="left"> <img  src="images/internalopampconfig.png"></p>
-     - Otherwise, if external amplifiers are used for current amplification (referred to as **external op-amp configuration**), undefine the macro **INTERNAL_OPAMP_CONFIG** in the header file **userparms.h.**
+     - Otherwise, if external amplifiers are used for current amplification (referred to as **external op-amp configuration**), undefine the macro <code>**INTERNAL_OPAMP_CONFIG**</code> in the header file <code>**userparms.h.**</code>
         <p align="left"><img  src="images/externalopampconfig.png"></p> 
 
 > **Note:**</br>
->The motor phase currents can be reconstructed from the DC Bus current by appropriately sampling it during the PWM switching period, called a single-shunt reconstruction algorithm. The firmware can be configured to demonstrate **the single shunt reconstruction algorithm** by defining the macro **SINGLE_SHUNT** in the header file **userparms.h** 
+>The motor phase currents can be reconstructed from the DC Bus current by appropriately sampling it during the PWM switching period, called a single-shunt reconstruction algorithm. The firmware can be configured to demonstrate **the single shunt reconstruction algorithm** by defining the macro <code>**SINGLE_SHUNT**</code> in the header file <code>**userparms.h**</code> 
 >For additional information, refer to Microchip application note **AN1299, “Single-Shunt Three-Phase Current Reconstruction Algorithm for Sensorless FOC of a PMSM.”**
 >By default, the firmware uses phase currents measured across the phase shunt resistors on two of the half-bridges of the three-phase inverter (**‘dual shunt configuration’**) to implement FOC.
 
@@ -165,8 +163,8 @@ Follow the below instructions, step by step, to set up and run the motor control
     <p align="left">
     <img  src="images/potentiometer.png"></p>
  
-10. Press the push button **SW2** to enter the extended speed range (NOMINAL_SPEED_RPM to MAXIMUM_SPEED_RPM).
-Press the push button **SW2** again to revert the speed of the motor to its nominal speed range (END_SPEED_RPM to NOMINAL_SPEED_RPM).
+10. Press the push button **SW2** to enter the extended speed range (<code>NOMINAL_SPEED_RPM</code> to <code>MAXIMUM_SPEED_RPM</code>).
+Press the push button **SW2** again to revert the speed of the motor to its nominal speed range (<code>END_SPEED_RPM</code> to <code>NOMINAL_SPEED_RPM</code>).
       <p align="left">
      <img  src="images/stopButton.png"></p> 
 
@@ -174,7 +172,7 @@ Press the push button **SW2** again to revert the speed of the motor to its nomi
 
 
 >**Note:**</br>
->The macros END_SPEED_RPM, NOMINAL_SPEED_RPM, and MAXIMUM_SPEED_RPM are specified in the header file **userparms. h** included in the project **pmsm.X.** The macros NOMINAL_SPEED_RPM and MAXIMUM_SPEED_RPM are defined as per the Motor manu-facturer’s specifications. Exceeding manufacture specifications may damage the motor or the board or both.
+>The macros END_SPEED_RPM, <code>NOMINAL_SPEED_RPM</code>, and <code>MAXIMUM_SPEED_RPM</code> are specified in the header file <code>**userparms. h**</code> included in the project **pmsm.X.** The macros <code>NOMINAL_SPEED_RPM</code> and <code>MAXIMUM_SPEED_RPM</code> are defined as per the Motor manu-facturer’s specifications. Exceeding manufacture specifications may damage the motor or the board or both.
 
 ## 5.3  Data visualization through X2C-Scope Plug-in of MPLABX
 
@@ -209,7 +207,7 @@ X2C-Scope is a third-party plug-in in MPLAB X, which helps in real-time diagnost
 
 
 7. Open the **Project Setup** tab in the **X2CScope Configuration** window and,
-     - Set **Scope Sampletime** as the interval at which X2CScopeUpdate() is called. In this application, it is every 50µs. 
+     - Set **Scope Sampletime** as the interval at which <code>X2CScopeUpdate()</code> is called. In this application, it is every <code>50µs.</code> 
      - Then, click **Set Values** to save the configuration.
 
       <p align="left">
