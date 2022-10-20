@@ -9,8 +9,8 @@
     Fine Edge Placement 
 
   Description:
-    Definitions in the file are for dsPIC33CK256MP508 on Motor Control 
-    Development board from Microchip
+    Definitions in the file are for dsPIC33CK256MP508 MC DIM plugged onto
+    Motor Control Development board from Microchip
 
 *******************************************************************************/
 /*******************************************************************************
@@ -215,7 +215,7 @@ void InitDutyPWM123Generators(void)
     Charge_Bootstrap_Capacitors()
 
   Summary:
-    Routine to initialize PWM generators 1-4 to charge bootstrap capacitors
+    Routine to initialize PWM generators 1-3 to charge bootstrap capacitors
 
   Description:
     Function to charge bootstrap capacitors at the beginning
@@ -992,10 +992,10 @@ void InitPWMGenerator2 (void)
     
 // *****************************************************************************
 /* Function:
-    InitPWMGenerator4()
+    InitPWMGenerator3()
 
   Summary:
-    Routine to initialize PWM generators 4 
+    Routine to initialize PWM generators 3 
 
   Description:
     Function initializes PWM module for 3-phase inverter control in Complimentary
@@ -1184,7 +1184,7 @@ void InitPWMGenerator3 (void)
        10 = Interrupts CPU at ADC Trigger 1 event
        11 = Time base interrupts are disabled */
     PG3EVTHbits.IEVTSEL = 3;
-    /* ADC Trigger 4 Source is PG3TRIGC Compare Event Enable bit
+    /* ADC Trigger 3 Source is PG3TRIGC Compare Event Enable bit
        0 = PG3TRIGC register compare event is disabled as 
            trigger source for ADC Trigger 2 */
     PG3EVTHbits.ADTR2EN3 = 0;
@@ -1272,7 +1272,7 @@ void InitPWMGenerator3 (void)
        011 = PWM Generator is triggered
        010 = LEB is active
        001 = Duty cycle is active (base PWM Generator signal)
-       000 = No termination qualifier used (qualifier forced to ?1?b1?)(4)*/
+       000 = No termination qualifier used (qualifier forced '1')*/
     PG3FPCIHbits.TQSS  = 3;
 #endif
     
